@@ -1,0 +1,3226 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GParse</name>
+    </assembly>
+    <members>
+        <member name="T:GParse.Collections.DiagnosticList">
+            <summary>
+            A class that implements both <see cref="T:System.IProgress`1" /> and <see cref="T:System.Collections.Generic.IReadOnlyList`1" /> for
+            <see cref="T:GParse.Diagnostic" /> for use with components that require an <see cref="T:System.IProgress`1" />
+            </summary>
+        </member>
+        <member name="P:GParse.Collections.DiagnosticList.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Collections.DiagnosticList.Item(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Collections.DiagnosticList.#ctor">
+            <summary>
+            Initializes this <see cref="T:GParse.Collections.DiagnosticList" />
+            </summary>
+        </member>
+        <member name="M:GParse.Collections.DiagnosticList.Report(GParse.Diagnostic)">
+            <summary>
+            Reports a diagnostic
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:GParse.Collections.DiagnosticList.GetEnumerator">
+            <summary>
+            Gets the enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Collections.DiagnosticList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Composable.Alternation`1">
+            <summary>
+            Represents an alternation of different possible grammar trees
+            </summary>
+        </member>
+        <member name="P:GParse.Composable.Alternation`1.GrammarNodes">
+            <summary>
+            The grammar nodes that compose this alternation
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.Alternation`1.#ctor(GParse.Composable.GrammarNode{`0}[])">
+            <summary>
+            Initializes an alternation
+            </summary>
+            <param name="grammarNodes"></param>
+        </member>
+        <member name="T:GParse.Composable.GrammarNode`1">
+            <summary>
+            The base class for all grammar nodes
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.GrammarNode`1.op_BitwiseOr(GParse.Composable.GrammarNode{`0},GParse.Composable.GrammarNode{`0})">
+            <summary>
+            Creates an alternation node
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Composable.GrammarNode`1.op_BitwiseAnd(GParse.Composable.GrammarNode{`0},GParse.Composable.GrammarNode{`0})">
+            <summary>
+            Creates a sequence node
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Composable.GrammarNodeListContainer`2">
+            <summary>
+            Represents a node that contains other nodes as it's children
+            </summary>
+            <typeparam name="TNode"></typeparam>
+            <typeparam name="TElem"></typeparam>
+        </member>
+        <member name="F:GParse.Composable.GrammarNodeListContainer`2.grammarNodes">
+            <summary>
+            The list of grammar nodes
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.GrammarNodeListContainer`2.#ctor(GParse.Composable.GrammarNode{`1}[])">
+            <summary>
+            Initializes a new <see cref="T:GParse.Composable.GrammarNodeListContainer`2" />
+            </summary>
+            <param name="grammarNodes"></param>
+        </member>
+        <member name="M:GParse.Composable.GrammarNodeListContainer`2.AppendNode(GParse.Composable.GrammarNode{`1})">
+            <summary>
+            Appends a node to this container's children list
+            </summary>
+            <param name="grammarNode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Composable.GrammarNodeListContainer`2.AppendNodes(System.Collections.Generic.IEnumerable{GParse.Composable.GrammarNode{`1}})">
+            <summary>
+            Appends a collection of nodes to this container's children list
+            </summary>
+            <param name="grammarNodes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Composable.Negation`1">
+            <summary>
+            Represents a negation of a grammar node
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:GParse.Composable.Negation`1.GrammarNode">
+            <summary>
+            The grammar node to be negated
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.Negation`1.#ctor(GParse.Composable.GrammarNode{`0})">
+            <summary>
+            Initializes a new grammar node
+            </summary>
+            <param name="grammarNode"></param>
+        </member>
+        <member name="T:GParse.Composable.NonTerminal`1">
+            <summary>
+            Represents a non-terminal
+            </summary>
+        </member>
+        <member name="P:GParse.Composable.NonTerminal`1.Name">
+            <summary>
+            The name of the production this references
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.NonTerminal`1.#ctor(System.String)">
+            <summary>
+            Initializes a non-terminal
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="T:GParse.Composable.Repetition`1">
+            <summary>
+            Represents a repetition of a grammar node
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:GParse.Composable.Repetition`1.GrammarNode">
+            <summary>
+            The grammar node that is to be repeated
+            </summary>
+        </member>
+        <member name="P:GParse.Composable.Repetition`1.Repetitions">
+            <summary>
+            The number of repetitions required and permitted.
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.Repetition`1.#ctor(GParse.Composable.GrammarNode{`0},System.ValueTuple{System.Nullable{System.UInt32},System.Nullable{System.UInt32}})">
+            <summary>
+            Creates a new repetition node
+            </summary>
+            <param name="grammarNode"></param>
+            <param name="repetitions"></param>
+        </member>
+        <member name="T:GParse.Composable.Sequence`1">
+            <summary>
+            Represents a sequence of grammar rules
+            </summary>
+        </member>
+        <member name="P:GParse.Composable.Sequence`1.GrammarNodes">
+            <summary>
+            The grammar nodes that compose this sequence
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.Sequence`1.#ctor(GParse.Composable.GrammarNode{`0}[])">
+            <summary>
+            Initializes a sequence
+            </summary>
+            <param name="grammarNodes"></param>
+        </member>
+        <member name="T:GParse.Composable.Terminal`1">
+            <summary>
+            Represents a terminal
+            </summary>
+        </member>
+        <member name="P:GParse.Composable.Terminal`1.Value">
+            <summary>
+            The value of the terminal
+            </summary>
+        </member>
+        <member name="M:GParse.Composable.Terminal`1.#ctor(`0)">
+            <summary>
+            Initializes a new terminal
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="T:GParse.Diagnostic">
+            <summary>
+            Represents a diagnostic emmited by the compiler, such as an error, warning, suggestion, etc.
+            </summary>
+        </member>
+        <member name="P:GParse.Diagnostic.Id">
+            <summary>
+            The ID of the emitted diagnostic
+            </summary>
+        </member>
+        <member name="P:GParse.Diagnostic.Range">
+            <summary>
+            The location that the diagnostic is reffering to in the code
+            </summary>
+        </member>
+        <member name="P:GParse.Diagnostic.Severity">
+            <summary>
+            The severity of the diagnostic
+            </summary>
+        </member>
+        <member name="P:GParse.Diagnostic.Description">
+            <summary>
+            The description of this diagnostic
+            </summary>
+        </member>
+        <member name="M:GParse.Diagnostic.#ctor(System.String,GParse.SourceRange,GParse.DiagnosticSeverity,System.String)">
+            <summary>
+            Initializes a new diagnostic
+            </summary>
+            <param name="id"></param>
+            <param name="range"></param>
+            <param name="severity"></param>
+            <param name="description"></param>
+        </member>
+        <member name="M:GParse.Diagnostic.#ctor(System.String,GParse.SourceLocation,GParse.DiagnosticSeverity,System.String)">
+            <summary>
+            Initializes a new diagnostic
+            </summary>
+            <param name="id"></param>
+            <param name="location"></param>
+            <param name="severity"></param>
+            <param name="description"></param>
+        </member>
+        <member name="T:GParse.DiagnosticSeverity">
+            <summary>
+            Represents the severity of the <see cref="T:GParse.Diagnostic"/> emmited by a parser or lexer
+            </summary>
+        </member>
+        <member name="F:GParse.DiagnosticSeverity.Error">
+            <summary>
+            The diagnostic represents an error.
+            </summary>
+        </member>
+        <member name="F:GParse.DiagnosticSeverity.Warning">
+            <summary>
+            The diagnostic represents a warning
+            </summary>
+        </member>
+        <member name="F:GParse.DiagnosticSeverity.Info">
+            <summary>
+            The diagnostic represents information about a section of the code
+            </summary>
+        </member>
+        <member name="F:GParse.DiagnosticSeverity.Hidden">
+            <summary>
+            The diagnostic is hidden from the user
+            </summary>
+        </member>
+        <member name="T:GParse.Errors.FatalParsingException">
+            <summary>
+            An exception thrown when a fatal error has occurred and parsing cannot continue.
+            </summary>
+        </member>
+        <member name="P:GParse.Errors.FatalParsingException.Range">
+            <summary>
+            The section of code that triggered this exception
+            </summary>
+        </member>
+        <member name="M:GParse.Errors.FatalParsingException.#ctor(GParse.SourceLocation,System.String)">
+            <summary>
+            Initializes a new <see cref="T:GParse.Errors.FatalParsingException" />
+            </summary>
+            <param name="location"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:GParse.Errors.FatalParsingException.#ctor(GParse.SourceRange,System.String)">
+            <summary>
+            Initializes a new <see cref="T:GParse.Errors.FatalParsingException" />
+            </summary>
+            <param name="range"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:GParse.Errors.FatalParsingException.#ctor(GParse.SourceLocation,System.String,System.Exception)">
+            <summary>
+            Initializes a new <see cref="T:GParse.Errors.FatalParsingException" />
+            </summary>
+            <param name="location"></param>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:GParse.Errors.FatalParsingException.#ctor(GParse.SourceRange,System.String,System.Exception)">
+            <summary>
+            Initializes a new <see cref="T:GParse.Errors.FatalParsingException" />
+            </summary>
+            <param name="range"></param>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:GParse.IO.CodeWriter">
+            <summary>
+            Defines a code writer
+            </summary>
+        </member>
+        <member name="P:GParse.IO.CodeWriter.Indentation">
+            <summary>
+            The indentation level of the writer
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.#ctor(System.String)">
+            <summary>
+            Initializes this class
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Reset">
+            <summary>
+            Resets the writer
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Indent">
+            <summary>
+            Increases the indentation level
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Outdent">
+            <summary>
+            Decreases the indentation level
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Unindent">
+            <summary>
+            Decreases the indentation level
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Write(System.Object)">
+            <summary>
+            Writes a value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Write(System.String)">
+            <summary>
+            Writes a value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.Write(System.String,System.Object[])">
+            <summary>
+            Writes a formatted value
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteIndentation">
+            <summary>
+            Writes the indentation prefix
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteIndented(System.Object)">
+            <summary>
+            Writes prefixed by indentation
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteIndented(System.String)">
+            <summary>
+            Writes prefixed by indentation
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteIndented(System.String,System.Object[])">
+            <summary>
+            WRites formatted prefixed by indentation
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLine">
+            <summary>
+            Writes an empty line
+            </summary>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLine(System.Object)">
+            <summary>
+            Writes a value followed by the line terminator
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLine(System.String)">
+            <summary>
+            Writes a value followed by the line terminator
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLine(System.String,System.Object[])">
+            <summary>
+            Writes a formatted value followed by the line terminator
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLineIndented(System.Object)">
+            <summary>
+            Writes a value followed by the line terminator and
+            prefixed by the indetation
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLineIndented(System.String)">
+            <summary>
+            Writes a value followed by the line terminator and
+            prefixed by the indetation
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WriteLineIndented(System.String,System.Object[])">
+            <summary>
+            Writes a formatted value followed by the line
+            terminator and prefixed by the indetation
+            </summary>
+            <param name="format"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.WithIndentation(System.Action)">
+            <summary>
+            Increases the indentation before the callback and
+            decreases it after
+            </summary>
+            <param name="cb"></param>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.GetCode">
+            <summary>
+            Gets the entire code as a string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.CodeWriter.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.IO.ICodeReader">
+            <summary>
+            Defines a stream reader meant for reading code, which provides line and column location info.
+            </summary>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.Advance(System.Int32)">
+            <summary>
+            Advances in the stream by a given <paramref name="offset"/>.
+            </summary>
+            <remarks>
+            Line endings are considered a single character and skipped over as such. The following
+            are considered line endings:
+            <list type="bullet">
+            <item>LF (\n)</item>
+            </list>
+            </remarks>
+            <param name="offset"></param>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.Read">
+            <summary>
+            Returns the next character from the stream or null if the reader is at the end of the stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.Read(System.Int32)">
+            <summary>
+            Returns the character at the given <paramref name="offset"/> from the stream or null if
+            the reader is at the end of the stream.
+            </summary>
+            <remarks>
+            This also skips all characters between the current position of the reader and the
+            provided <paramref name="offset"/>.
+            </remarks>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadLine">
+            <summary>
+            Reads a line from the stream. The returned string does not contain the end-of-line character.
+            </summary>
+            <returns></returns>
+            <remarks>
+            The following are considered line endings:
+            <list type="bullet">
+            <item>CR + LF (\r\n)</item>
+            <item>LF (\n)</item>
+            <item>CR (\r)</item>
+            <item><see cref="P:System.Environment.NewLine"/></item>
+            <item>EOF</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadString(System.Int32)">
+            <summary>
+            Reads a string of the given length from the stream.
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadStringUntil(System.Char)">
+            <summary>
+            Reads the contents from the stream until the provided <paramref name="delim"/> is found
+            or the end of the stream is hit.
+            </summary>
+            <param name="delim"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadStringUntil(System.String)">
+            <summary>
+            Reads the contents from the stream until the provided <paramref name="delim"/> is found
+            or the end of the stream is hit.
+            </summary>
+            <param name="delim"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadStringUntil(System.Predicate{System.Char})">
+            <summary>
+            Reads the contents from the stream until a character passes the provided <paramref
+            name="filter"/> or the end of the stream is hit.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadStringWhile(System.Predicate{System.Char})">
+            <summary>
+            Reads the contents from the stream while the characters pass the provided <paramref name="filter"/>.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadToEnd">
+            <summary>
+            Reads the contents from the stream until the end of the stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanLine">
+            <summary>
+            Reads a line from the stream. The returned span does not contain the end-of-line character.
+            </summary>
+            <returns></returns>
+            <remarks>
+            The following are considered line endings:
+            <list type="bullet">
+            <item>CR + LF (\r\n)</item>
+            <item>LF (\n)</item>
+            <item>CR (\r)</item>
+            <item><see cref="P:System.Environment.NewLine"/></item>
+            <item>EOF</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpan(System.Int32)">
+            <summary>
+            Reads a span of the given length from the stream.
+            </summary>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanUntil(System.Char)">
+            <summary>
+            Reads the contents from the stream until the provided <paramref name="delim"/> is found
+            or the end of the stream is hit.
+            </summary>
+            <param name="delim"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanUntil(System.String)">
+            <summary>
+            Reads the contents from the stream until the provided <paramref name="delim"/> is found
+            or the end of the stream is hit.
+            </summary>
+            <param name="delim"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanUntil(System.Predicate{System.Char})">
+            <summary>
+            Reads the contents from the stream until a character passes the provided <paramref
+            name="filter"/> or the end of the stream is hit.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanWhile(System.Predicate{System.Char})">
+            <summary>
+            Reads the contents from the stream while the characters pass the provided <paramref name="filter"/>.
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.ReadSpanToEnd">
+            <summary>
+            Reads the contents from the stream until the end of the stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.MatchRegex(System.String)">
+            <summary>
+            Attempts to match a regex <paramref name="expression"/> but does not advance if it fails.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.MatchRegex(System.Text.RegularExpressions.Regex)">
+            <summary>
+            Attempts to match a regex but does not advance if it fails.
+            </summary>
+            <param name="regex">
+            <para>
+            A <see cref="T:System.Text.RegularExpressions.Regex"/> instance that contains an expression starting with the \G modifier.
+            </para>
+            <para>
+            An exception will be thrown if the match does not start at the same position the reader
+            is located at.
+            </para>
+            </param>
+            <returns></returns>
+            <remarks>
+            This method is offered purely for the performance benefits of regular expressions
+            generated with Regex.CompileToAssembly
+            (https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex.compiletoassembly).
+            It is not meant to be used with anything else, since all regexes passed in the form of
+            strings are stored in an internal cache and the instances are initialized with <see cref="F:System.Text.RegularExpressions.RegexOptions.Compiled"/>.
+            </remarks>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.Reset">
+            <summary>
+            Seeks back to the beggining of the stream.
+            </summary>
+        </member>
+        <member name="M:GParse.IO.ICodeReader.Restore(GParse.SourceLocation)">
+            <summary>
+            Restores the reader's location to a provided <paramref name="location"/>.
+            </summary>
+            <param name="location"></param>
+            <remarks>
+            No validation is done to check that the provided line and column numbers are correct.
+            </remarks>
+        </member>
+        <member name="T:GParse.IO.IReadOnlyCodeReader">
+            <summary>
+            Defines a read-only stream reader meant for reading code, which provides line and column
+            location info.
+            </summary>
+        </member>
+        <member name="P:GParse.IO.IReadOnlyCodeReader.Line">
+            <summary>
+            Current line.
+            </summary>
+        </member>
+        <member name="P:GParse.IO.IReadOnlyCodeReader.Column">
+            <summary>
+            Current column.
+            </summary>
+        </member>
+        <member name="P:GParse.IO.IReadOnlyCodeReader.Position">
+            <summary>
+            Current position.
+            </summary>
+        </member>
+        <member name="P:GParse.IO.IReadOnlyCodeReader.Location">
+            <summary>
+            The full location of the reader.
+            </summary>
+        </member>
+        <member name="P:GParse.IO.IReadOnlyCodeReader.Length">
+            <summary>
+            The size of the stream of code being read.
+            </summary>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Char)">
+            <summary>
+            Returns the offset of the given <paramref name="character" /> or -1 if not found.
+            </summary>
+            <param name="character">The character to look for.</param>
+            <returns>The offset of the given <paramref name="character" /> or -1 if not found.</returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Char,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Char)" />
+            </summary>
+            <param name="character"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Char)" /></param>
+            <param name="offset">The offset to start searching at.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Char)" /></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Predicate{System.Char})">
+            <summary>
+            Finds the offset of the first character that passes the provided <paramref
+            name="predicate" /> or -1 if not found.
+            </summary>
+            <param name="predicate">The predicate that checks each character.</param>
+            <returns>
+            The offset of the first character that passes the provided <paramref name="predicate" />
+            or -1 if not found.
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Predicate{System.Char},System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Predicate{System.Char})" />
+            </summary>
+            <param name="predicate"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Predicate{System.Char})" /></param>
+            <param name="offset">The offset to start searching at.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.Predicate{System.Char})" /></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.String)">
+            <summary>
+            Finds the offset of a given <paramref name="str" /> or -1 if not found.
+            </summary>
+            <param name="str">The string to search for.</param>
+            <returns>The offset of a given <paramref name="str" /> or -1 if not found.</returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.String,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.String)" />
+            </summary>
+            <param name="str"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.String)" /></param>
+            <param name="offset">The offset to start searching at.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.String)" /></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Finds the offset of the given <paramref name="span" /> or -1 if not found.
+            </summary>
+            <param name="span">The span to search for.</param>
+            <returns>The offset of the given <paramref name="span" /> or -1 if not found.</returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.ReadOnlySpan{System.Char})" />
+            </summary>
+            <param name="span"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.ReadOnlySpan{System.Char})" /></param>
+            <param name="offset">The offset to start searching at.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.FindOffset(System.ReadOnlySpan{System.Char})" /></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsNext(System.Char)">
+            <summary>
+            Returns whether the provided <paramref name="character" /> is at the <see
+            cref="P:GParse.IO.IReadOnlyCodeReader.Position" /> the reader is at.
+            </summary>
+            <param name="character">The character to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsNext(System.String)">
+            <summary>
+            Returns whether the provided <paramref name="str" /> is at the <see cref="P:GParse.IO.IReadOnlyCodeReader.Position" />
+            the reader is at.
+            </summary>
+            <param name="str">The string to check.</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsNext(System.ReadOnlySpan{System.Char})">
+            <summary>
+            Returns whether the provided <paramref name="span" /> is at the <see cref="P:GParse.IO.IReadOnlyCodeReader.Position" />
+            the reader is at.
+            </summary>
+            <param name="span"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsAt(System.Char,System.Int32)">
+            <summary>
+            Returns whether the provided <paramref name="character" /> is at the provided <paramref
+            name="offset" />.
+            </summary>
+            <param name="character">The character to check.</param>
+            <param name="offset">The offset to check at.</param>
+            <returns>
+            Whether the provided <paramref name="character" /> is at the provided <paramref
+            name="offset" />.
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsAt(System.String,System.Int32)">
+            <summary>
+            Returns whether the provided <paramref name="str" /> is at the provided <paramref
+            name="offset" />.
+            </summary>
+            <param name="str">The string to check.</param>
+            <param name="offset">The offset to check at.</param>
+            <returns>
+            Whether the provided <paramref name="str" /> is at the provided <paramref name="offset" />.
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.IsAt(System.ReadOnlySpan{System.Char},System.Int32)">
+            <summary>
+            Returns whether the provided <paramref name="span" /> is at the provided <paramref
+            name="offset" />.
+            </summary>
+            <param name="span">The span to check.</param>
+            <param name="offset">The offset to check at.</param>
+            <returns>
+            Whether the provided <paramref name="span" /> is at the provided <paramref name="offset" />.
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.Peek">
+            <summary>
+            Returns the next character without advancing in the stream or null if the reader is at
+            the end of the stream.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.Peek(System.Int32)">
+            <summary>
+            Returns the character at the given offset without advancing in the stream or null if the
+            reader is at the end of the stream.
+            </summary>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekRegex(System.String)">
+            <summary>
+            Attempts to match a regex without advancing the stream.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekRegex(System.Text.RegularExpressions.Regex)">
+            <summary>
+            Attempts to match a regex without advancing the stream.
+            </summary>
+            <param name="regex">
+            <para>
+            A <see cref="T:System.Text.RegularExpressions.Regex" /> instance that contains an expression starting with the \G modifier.
+            </para>
+            <para>
+            An exception will be thrown if the match does not start at the same position the reader
+            is located at.
+            </para>
+            </param>
+            <returns></returns>
+            <remarks>
+            This method is offered purely for the performance benefits of regular expressions
+            generated with Regex.CompileToAssembly
+            (https://docs.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex.compiletoassembly).
+            It is not meant to be used with anything else, since all regexes passed in the form of
+            strings are stored in an internal cache and the instances are initialized with <see
+            cref="F:System.Text.RegularExpressions.RegexOptions.Compiled" />.
+            </remarks>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekString(System.Int32)">
+            <summary>
+            Reads a string of the provided length without advancing the stream.
+            </summary>
+            <param name="length">The length of the string to be read.</param>
+            <returns>
+            The string that was read or null if there weren't enough characters left to be read.
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekString(System.Int32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekString(System.Int32)" />
+            </summary>
+            <param name="length"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekString(System.Int32)" /></param>
+            <param name="offset">The offset to get the string from.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekString(System.Int32)" /></returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekSpan(System.Int32)">
+            <summary>
+            Reads a span with a maximum size of <paramref name="length" /> without advancing the
+            stream (might be smaller than the requested length if there aren't enough characters
+            left to be read).
+            </summary>
+            <param name="length">The maximum length of the span to peek.</param>
+            <returns>
+            The read span (might be smaller than the requested length if there aren't enough
+            characters left to be read).
+            </returns>
+        </member>
+        <member name="M:GParse.IO.IReadOnlyCodeReader.PeekSpan(System.Int32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekSpan(System.Int32)" />
+            </summary>
+            <param name="length"><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekSpan(System.Int32)" /></param>
+            <param name="offset">The offset to get the span from.</param>
+            <returns><inheritdoc cref="M:GParse.IO.IReadOnlyCodeReader.PeekSpan(System.Int32)" /></returns>
+        </member>
+        <member name="T:GParse.IO.StringCodeReader">
+            <summary>
+            A source code reader
+            </summary>
+        </member>
+        <member name="F:GParse.IO.StringCodeReader._regexCache">
+            <summary>
+            A cache of compiled regex expressions
+            </summary>
+        </member>
+        <member name="F:GParse.IO.StringCodeReader._code">
+            <summary>
+            The string containing the code being read
+            </summary>
+        </member>
+        <member name="P:GParse.IO.StringCodeReader.Line">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.IO.StringCodeReader.Column">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.IO.StringCodeReader.Position">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.IO.StringCodeReader.Location">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.IO.StringCodeReader.Length">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.#ctor(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Advance(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.Char,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.Predicate{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.Predicate{System.Char},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.ReadOnlySpan{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.FindOffset(System.ReadOnlySpan{System.Char},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsNext(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsNext(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsNext(System.ReadOnlySpan{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsAt(System.Char,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsAt(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.IsAt(System.ReadOnlySpan{System.Char},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Peek">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Peek(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekRegex(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekRegex(System.Text.RegularExpressions.Regex)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekString(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekString(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekSpan(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.PeekSpan(System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Read">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Read(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadLine">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadString(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadStringUntil(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadStringUntil(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadStringUntil(System.Predicate{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadStringWhile(System.Predicate{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadToEnd">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanLine">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpan(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanUntil(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanUntil(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanUntil(System.Predicate{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanWhile(System.Predicate{System.Char})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.ReadSpanToEnd">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.MatchRegex(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.MatchRegex(System.Text.RegularExpressions.Regex)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Reset">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.IO.StringCodeReader.Restore(GParse.SourceLocation)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Lexing.Composable.CharRangeNode">
+            <summary>
+            Represents a grammar node that matches an inclusive range
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.Composable.CharRangeNode.Start">
+            <summary>
+            The first char this range will match
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.Composable.CharRangeNode.End">
+            <summary>
+            The last char this range will match
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Composable.CharRangeNode.#ctor(System.Char,System.Char)">
+            <summary>
+            Initializes this character range grammar node
+            </summary>
+            <param name="start">The first char this range will match</param>
+            <param name="end">The last char this range will match</param>
+        </member>
+        <member name="T:GParse.Lexing.Composable.ComposableLexerRuleCompiler`1">
+            <summary>
+            A <see cref="T:GParse.Composable.GrammarNode`1"/>-based lexer rule compiler
+            </summary>
+            <typeparam name="TTokenType"></typeparam>
+        </member>
+        <member name="M:GParse.Lexing.Composable.ComposableLexerRuleCompiler`1.CompileRule(GParse.Composable.GrammarNode{System.Char})">
+            <inheritdoc/>
+        </member>
+        <member name="T:GParse.Lexing.Composable.IComposableLexerRuleCompiler`1">
+            <summary>
+            The interface for a composable rule compiler
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Composable.IComposableLexerRuleCompiler`1.CompileRule(GParse.Composable.GrammarNode{System.Char})">
+            <summary>
+            Compiles a <see cref="T:GParse.Composable.GrammarNode`1"/> into a <see cref="T:GParse.Lexing.Modules.ILexerModule`1"/>.
+            </summary>
+            <param name="grammarNode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.Composable.PrefixNode">
+            <summary>
+            Represents a sequence that defines the prefix of this rule
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Composable.PrefixNode.HasProperPrefixSequence(GParse.Composable.GrammarNode{System.Char})">
+            <summary>
+            Returns whether a grammar node has a proper <see cref="T:GParse.Lexing.Composable.PrefixNode"/>
+            </summary>
+            <param name="grammarNode"></param>
+            <returns></returns>
+        </member>
+        <member name="P:GParse.Lexing.Composable.PrefixNode.GrammarNode">
+            <summary>
+            The grammar node that represents the prefix
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Composable.PrefixNode.#ctor(GParse.Composable.GrammarNode{System.Char})">
+            <summary>
+            Initializes a prefix sequence
+            </summary>
+            <param name="grammarNode"></param>
+        </member>
+        <member name="T:GParse.Lexing.ILexer`1">
+            <summary>
+            Defines the interface of a lexer
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="M:GParse.Lexing.ILexer`1.Consume">
+            <summary>
+            Consumes the next token in the stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ILexer`1.Rewind(GParse.SourceLocation)">
+            <summary>
+            Returns to a given location
+            </summary>
+            <param name="location"></param>
+        </member>
+        <member name="T:GParse.Lexing.ILexerBuilder`1">
+            <summary>
+            Defines the interface of a <see cref="T:GParse.Lexing.ILexer`1" /> builder
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="M:GParse.Lexing.ILexerBuilder`1.AddModule(GParse.Lexing.Modules.ILexerModule{`0})">
+            <summary>
+            Adds a module to this builder
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Lexing.ILexerBuilder`1.BuildLexer(System.String,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Builds a lexer with <paramref name="input" /> as the stream
+            </summary>
+            <param name="input"></param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ILexerBuilder`1.BuildLexer(GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Builds a lexer with <paramref name="reader" /> as the stream
+            </summary>
+            <param name="reader"></param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.IReadOnlyLexer`1">
+            <summary>
+            Defines the interface of a read-only lexer
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="P:GParse.Lexing.IReadOnlyLexer`1.Location">
+            <summary>
+            The location that the lexer is at in the stream
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.IReadOnlyLexer`1.EOF">
+            <summary>
+            Whether the lexer is at the end of the file
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.IReadOnlyLexer`1.Peek">
+            <summary>
+            Returns the next token without advancing in the stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.ITokenReader`1">
+            <summary>
+            Defines the interface of a token reader
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="P:GParse.Lexing.ITokenReader`1.Location">
+            <summary>
+            The location of the token reader
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.ITokenReader`1.EOF">
+            <summary>
+            Whether we're at the end of the file
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Lookahead(System.Int32)">
+            <summary>
+            Consumes the token at <paramref name="offset" /> in the stream without moving
+            </summary>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Consume">
+            <summary>
+            Consumes the next token in the stream
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Skip(System.Int32)">
+            <summary>
+            Skips a certain amount of tokens
+            </summary>
+            <param name="count">The amount of tokens to skip</param>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Rewind(GParse.SourceLocation)">
+            <summary>
+            Returns to a given location
+            </summary>
+            <param name="location"></param>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(`0,System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Type" /> equal to <paramref name="tokenType" />
+            </summary>
+            <param name="tokenType">The wanted type</param>
+            <param name="offset">The offset</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{`0},System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Type" /> in the given <paramref name="tokenTypes" />
+            </summary>
+            <param name="tokenTypes"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(System.String,System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Id" /> equal to <paramref name="ID" />
+            </summary>
+            <param name="ID"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Id" /> in the given <paramref name="ids" />
+            </summary>
+            <param name="ids"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(`0,System.String,System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Type" /> equal to <paramref name="tokenType" /> and the
+            <see cref="F:GParse.Lexing.Token`1.Id" /> equal to <paramref name="id" />
+            </summary>
+            <param name="tokenType"></param>
+            <param name="id"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <summary>
+            Whether the character at a given <paramref name="offset" /> from the first unread character
+            has the <see cref="F:GParse.Lexing.Token`1.Type" /> in the given <paramref name="tokenTypes" /> and
+            has the <see cref="F:GParse.Lexing.Token`1.Id" /> in the given <paramref name="ids" />
+            </summary>
+            <param name="tokenTypes"></param>
+            <param name="ids"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(System.String,GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has the required <paramref name="ID" />
+            </summary>
+            <param name="ID">The ID to check for</param>
+            <param name="token">The accepted token</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(System.Collections.Generic.IEnumerable{System.String},GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has one of the required <paramref name="IDs" />
+            </summary>
+            <param name="IDs"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(`0,GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has the required <paramref name="type" />
+            </summary>
+            <param name="type">The type to check for</param>
+            <param name="token">The accepted token</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(System.Collections.Generic.IEnumerable{`0},GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has one of the required <paramref name="types" />
+            </summary>
+            <param name="types"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(`0,System.String,GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has the required <paramref name="ID" /> and
+            <paramref name="type" />
+            </summary>
+            <param name="type">The type to check for</param>
+            <param name="ID">The ID to check for</param>
+            <param name="token">The accepted token</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.Accept(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String},GParse.Lexing.Token{`0}@)">
+            <summary>
+            Only advances in the stream if the token has the one of the required <paramref name="IDs" />
+            and <paramref name="types" />
+            </summary>
+            <param name="types"></param>
+            <param name="IDs"></param>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(System.String)">
+            <summary>
+            Throws an exception if the next token in the stream does not have the <paramref name="ID" />
+            required
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Throws an exception if the next token in the stream does not have one of the required
+            <paramref name="IDs" />
+            </summary>
+            <param name="IDs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(`0)">
+            <summary>
+            Throws an exception if the next token in the stream does not have the <paramref name="type" />
+            required
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Throws an excepton if the next token in the stream does not have one of the required
+            <paramref name="types" />
+            </summary>
+            <param name="types"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(`0,System.String)">
+            <summary>
+            Throws an exception if the next token in the stream does not have the <paramref name="ID" />
+            and <paramref name="type" /> required
+            </summary>
+            <param name="type"></param>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ITokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Throws an exception if the next token in the stream does not have one of the required
+            <paramref name="IDs" /> or <paramref name="types" />
+            </summary>
+            <param name="types"></param>
+            <param name="IDs"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.LexerModuleTree`1">
+            <summary>
+            This tree is only meant for use inside <see cref="T:GParse.Lexing.ModularLexerBuilder`1" /> and
+            <see cref="T:GParse.Lexing.ModularLexer`1" />. If used anywhere else without knowing all implications it
+            WILL GO BADLY.
+            </summary>
+        </member>
+        <member name="T:GParse.Lexing.LexerModuleTree`1.TreeNode">
+            <summary>
+            A node in the tree
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.LexerModuleTree`1.TreeNode.Parent">
+            <summary>
+            The parent of this node
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.LexerModuleTree`1.TreeNode.#ctor(GParse.Lexing.LexerModuleTree{`0}.TreeNode)">
+            <summary>
+            Initializes a node
+            </summary>
+            <param name="parent"></param>
+        </member>
+        <member name="F:GParse.Lexing.LexerModuleTree`1.TreeNode.Values">
+            <summary>
+            The modules in this node
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.LexerModuleTree`1.TreeNode.Children">
+            <summary>
+            The children of this node
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.LexerModuleTree`1.Root">
+            <summary>
+            The root of the tree
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.LexerModuleTree`1.AddChild(GParse.Lexing.Modules.ILexerModule{`0})">
+            <summary>
+            Adds a module to the tree
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Lexing.LexerModuleTree`1.RemoveChild(GParse.Lexing.Modules.ILexerModule{`0})">
+            <summary>
+            Removes a child module from the tree
+            </summary>
+            <param name="module">The module to be removed</param>
+            <returns>
+            Whether the value was removed (false means the module did not exist in the tree)
+            </returns>
+        </member>
+        <member name="M:GParse.Lexing.LexerModuleTree`1.GetSortedCandidates(GParse.IO.ICodeReader)">
+            <summary>
+            Return candidate modules based on whether their prefixes match what's at the start of what's
+            left in the reader
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.ModularLexer`1">
+            <summary>
+            A modular lexer created by the <see cref="T:GParse.Lexing.ModularLexerBuilder`1" />
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="F:GParse.Lexing.ModularLexer`1.ModuleTree">
+            <summary>
+            This lexer's module tree
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.ModularLexer`1.Reader">
+            <summary>
+            The reader being used by the lexer
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.ModularLexer`1.DiagnosticEmitter">
+            <summary>
+            The <see cref="T:GParse.Diagnostic" /> emmiter.
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.#ctor(GParse.Lexing.LexerModuleTree{`0},GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Initializes a new lexer
+            </summary>
+            <param name="tree"></param>
+            <param name="reader"></param>
+            <param name="diagnosticEmitter"></param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.InternalConsumeToken">
+            <summary>
+            Consumes a token accounting for trivia tokens.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.GetFirstMeaningfulToken">
+            <summary>
+            Retrieves the first meaningful token while accumulating trivia
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.Consume">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.Rewind(GParse.SourceLocation)">
+            <summary>
+            Returns to the given location
+            </summary>
+            <param name="location"></param>
+        </member>
+        <member name="P:GParse.Lexing.ModularLexer`1.EOF">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Lexing.ModularLexer`1.Location">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.ModularLexer`1.Peek">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Lexing.ModularLexerBuilder`1">
+            <summary>
+            Defines a <see cref="T:GParse.Lexing.ILexer`1" /> builder
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="F:GParse.Lexing.ModularLexerBuilder`1.Modules">
+            <summary>
+            The module tree
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddModule(GParse.Lexing.Modules.ILexerModule{`0})">
+            <summary>
+            Adds a module to the lexer (affects existing instances)
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.RemoveModule(GParse.Lexing.Modules.ILexerModule{`0})">
+            <summary>
+            Removes an module from the lexer (affects existing instances)
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddLiteral(System.String,`0,System.String)">
+            <summary>
+            Defines a token as a literal string
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="raw">The raw value of the token</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddLiteral(System.String,`0,System.String,System.Boolean)">
+            <summary>
+            Defines a token as a literal string
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="raw">The raw value of the token</param>
+            <param name="isTrivia">
+            Whether this token is considered trivia (will not show up in the enumerated token sequence but
+            inside <see cref="P:GParse.Lexing.Token`1.Trivia" /> instead)
+            </param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddLiteral(System.String,`0,System.String,System.Object)">
+            <summary>
+            Defines a token as a literal string
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="raw">The raw value of the token</param>
+            <param name="value">The value of this token</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddLiteral(System.String,`0,System.String,System.Object,System.Boolean)">
+            <summary>
+            Defines a token as a literal string
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="raw">The raw value of the token</param>
+            <param name="value">The value of this token</param>
+            <param name="isTrivia">
+            Whether this token is considered trivia (will not show up in the enumerated token sequence but
+            inside <see cref="P:GParse.Lexing.Token`1.Trivia" /> instead)
+            </param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.String)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.Text.RegularExpressions.Regex)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.String,System.String)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.Text.RegularExpressions.Regex,System.String)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.String,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object})">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+            <param name="converter">The function to convert the raw value into a desired type</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.Text.RegularExpressions.Regex,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object})">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+            <param name="converter">The function to convert the raw value into a desired type</param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.String,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object},System.Boolean)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+            <param name="converter">The function to convert the raw value into a desired type</param>
+            <param name="isTrivia">
+            Whether this token is considered trivia (will not show up in the enumerated token sequence but
+            inside <see cref="P:GParse.Lexing.Token`1.Trivia" /> instead)
+            </param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.AddRegex(System.String,`0,System.Text.RegularExpressions.Regex,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object},System.Boolean)">
+            <summary>
+            Defines a token as a regex pattern
+            </summary>
+            <param name="ID">The ID of the token</param>
+            <param name="type">The type of the token</param>
+            <param name="regex">The pattern that will match the raw token value</param>
+            <param name="prefix">The constant prefix of the regex expression (if any)</param>
+            <param name="converter">The function to convert the raw value into a desired type</param>
+            <param name="isTrivia">
+            Whether this token is considered trivia (will not show up in the enumerated token sequence but
+            inside <see cref="P:GParse.Lexing.Token`1.Trivia" /> instead)
+            </param>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.BuildLexer(System.String,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Creates a lexer that will enumerate the tokens in <paramref name="input" />
+            </summary>
+            <param name="input">The string input to be tokenized</param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.ModularLexerBuilder`1.BuildLexer(GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Creates a lexer that will enumerate the tokens in <paramref name="reader" />
+            </summary>
+            <param name="reader">The reader of the input to be tokenized</param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.Modules.ILexerModule`1">
+            <summary>
+            Defines the interface of a lexer module
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="P:GParse.Lexing.Modules.ILexerModule`1.Name">
+            <summary>
+            Parser module name
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.Modules.ILexerModule`1.Prefix">
+            <summary>
+            The module prefix
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Modules.ILexerModule`1.CanConsumeNext(GParse.IO.IReadOnlyCodeReader)">
+            <summary>
+            Whether this module can consume what's left in the reader
+            </summary>
+            <param name="reader">The reader that the module should use</param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.Modules.ILexerModule`1.ConsumeNext(GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Consume the next element in the reader
+            </summary>
+            <param name="reader">The reader that the module should use</param>
+            <param name="diagnosticEmitter">The emmiter for diagnostics</param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.Modules.LiteralLexerModule`1">
+            <summary>
+            A module that defines a token with a fixed format
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="P:GParse.Lexing.Modules.LiteralLexerModule`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Lexing.Modules.LiteralLexerModule`1.Prefix">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.#ctor(System.String,`0,System.String)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.LiteralLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="raw"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.#ctor(System.String,`0,System.String,System.Object)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.LiteralLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.#ctor(System.String,`0,System.String,System.Boolean)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.LiteralLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="raw"></param>
+            <param name="isTrivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.#ctor(System.String,`0,System.String,System.Object,System.Boolean)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.LiteralLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+            <param name="isTrivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.CanConsumeNext(GParse.IO.IReadOnlyCodeReader)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Modules.LiteralLexerModule`1.ConsumeNext(GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Lexing.Modules.RegexLexerModule`1">
+            <summary>
+            A module that defines a token through a regex pattern
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="P:GParse.Lexing.Modules.RegexLexerModule`1.Name">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Lexing.Modules.RegexLexerModule`1.Prefix">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.String,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object},System.Boolean)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+            <param name="converter"></param>
+            <param name="isTrivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.Text.RegularExpressions.Regex,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object},System.Boolean)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+            <param name="converter"></param>
+            <param name="isTrivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.String,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object})">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+            <param name="converter"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.Text.RegularExpressions.Regex,System.String,System.Func{System.Text.RegularExpressions.Match,System.Object})">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+            <param name="converter"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.String,System.String)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.Text.RegularExpressions.Regex,System.String)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+            <param name="prefix"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.String)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.#ctor(System.String,`0,System.Text.RegularExpressions.Regex)">
+            <summary>
+            Initializes the <see cref="T:GParse.Lexing.Modules.RegexLexerModule`1" />
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <param name="regex"></param>
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.CanConsumeNext(GParse.IO.IReadOnlyCodeReader)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Modules.RegexLexerModule`1.ConsumeNext(GParse.IO.ICodeReader,System.IProgress{GParse.Diagnostic})">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Lexing.Token`1">
+            <summary>
+            A token outputted by the lexer
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.Id">
+            <summary>
+            The ID of the token
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.Raw">
+            <summary>
+            The raw value of the token
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.Value">
+            <summary>
+            The value of the token
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.Type">
+            <summary>
+            The type of the token
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.Range">
+            <summary>
+            The <see cref="T:GParse.SourceRange" /> of the token
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1.IsTrivia">
+            <summary>
+            Whether this token is a piece of trivia, such as comments and/or whitespaces
+            </summary>
+        </member>
+        <member name="F:GParse.Lexing.Token`1._trivia">
+            <summary>
+            The trivia this token contains
+            </summary>
+        </member>
+        <member name="P:GParse.Lexing.Token`1.Trivia">
+            <summary>
+            The trivia this token contains
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.Token`1.#ctor(System.String,System.String,System.Object,`0,GParse.SourceRange)">
+            <summary>
+            Initializes this token
+            </summary>
+            <param name="id"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="range"></param>
+        </member>
+        <member name="M:GParse.Lexing.Token`1.#ctor(System.String,System.String,System.Object,`0,GParse.SourceRange,System.Boolean)">
+            <summary>
+            Initializes this token
+            </summary>
+            <param name="id"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="range"></param>
+            <param name="isTrivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Token`1.#ctor(System.String,System.String,System.Object,`0,GParse.SourceRange,GParse.Lexing.Token{`0}[])">
+            <summary>
+            Initializes this token
+            </summary>
+            <param name="id"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="range"></param>
+            <param name="trivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Token`1.#ctor(System.String,System.String,System.Object,`0,GParse.SourceRange,System.Boolean,GParse.Lexing.Token{`0}[])">
+            <summary>
+            Initializes this token
+            </summary>
+            <param name="id"></param>
+            <param name="raw"></param>
+            <param name="value"></param>
+            <param name="type"></param>
+            <param name="range"></param>
+            <param name="isTrivia"></param>
+            <param name="trivia"></param>
+        </member>
+        <member name="M:GParse.Lexing.Token`1.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Token`1.Equals(GParse.Lexing.Token{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Token`1.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Token`1.op_Equality(GParse.Lexing.Token{`0},GParse.Lexing.Token{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.Token`1.op_Inequality(GParse.Lexing.Token{`0},GParse.Lexing.Token{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Lexing.TokenReader`1">
+            <summary>
+            Implements the token reader interface
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="F:GParse.Lexing.TokenReader`1.Lexer">
+            <summary>
+            The parser's Lexer instance
+            </summary>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.#ctor(GParse.Lexing.ILexer{`0})">
+            <summary>
+            Initializes a token with a cache of lookahead of 1 token
+            </summary>
+            <param name="lexer"></param>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.#ctor(GParse.Lexing.ILexer{`0},System.Int32)">
+            <summary>
+            Initializes a token with a lookahead cache size of <paramref name="maxLookaheadOffset" />
+            </summary>
+            <param name="lexer"></param>
+            <param name="maxLookaheadOffset"></param>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.CacheTokens(System.Int32)">
+            <summary>
+            Saves N tokens from the lexer on the readahead cache
+            </summary>
+            <param name="count"></param>
+        </member>
+        <member name="P:GParse.Lexing.TokenReader`1.Location">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Lexing.TokenReader`1.EOF">
+            <inheritdoc/>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Lookahead(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Consume">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Skip(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Rewind(GParse.SourceLocation)">
+            <inheritdoc/>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(`0,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{`0},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(`0,System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.IsAhead(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String},System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(System.String,GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(System.Collections.Generic.IEnumerable{System.String},GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(`0,GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(System.Collections.Generic.IEnumerable{`0},GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(`0,System.String,GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.Accept(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String},GParse.Lexing.Token{`0}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(`0,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.FatalExpect(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.GetEnumerator">
+            <summary>
+            Returns an enumerator that uses <see cref="M:GParse.Lexing.ITokenReader`1.Lookahead(System.Int32)" /> to
+            enumerate all tokens
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Lexing.TokenReader`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that uses <see cref="M:GParse.Lexing.ITokenReader`1.Lookahead(System.Int32)" /> to
+            enumerate all tokens
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Lexing.TokenReaderEnumerator`1">
+            <summary>
+            An enumerator for the <see cref="T:GParse.Lexing.ITokenReader`1" /> that uses the
+            <see cref="M:GParse.Lexing.ITokenReader`1.Lookahead(System.Int32)" /> method to enumerate the tokens
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+        </member>
+        <member name="M:GParse.Lexing.TokenReaderEnumerator`1.#ctor(GParse.Lexing.ITokenReader{`0})">
+            <inheritdoc />
+        </member>
+        <member name="P:GParse.Lexing.TokenReaderEnumerator`1.Current">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReaderEnumerator`1.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReaderEnumerator`1.MoveNext">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Lexing.TokenReaderEnumerator`1.Reset">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Math.Range`1">
+            <summary>
+            An inclusive <see cref="T:System.UInt32" /> inclusive range
+            </summary>
+        </member>
+        <member name="F:GParse.Math.Range`1.Start">
+            <summary>
+            Starting location of the range
+            </summary>
+        </member>
+        <member name="F:GParse.Math.Range`1.End">
+            <summary>
+            Ending location of the range (inclusive)
+            </summary>
+        </member>
+        <member name="F:GParse.Math.Range`1.IsSingle">
+            <summary>
+            Whether this range spans a single element
+            </summary>
+        </member>
+        <member name="M:GParse.Math.Range`1.#ctor(`0)">
+            <summary>
+            Initializes a range that spans a single number
+            </summary>
+            <param name="single"></param>
+        </member>
+        <member name="M:GParse.Math.Range`1.#ctor(`0,`0)">
+            <summary>
+            Initializes a range with a start and end
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:GParse.Math.Range`1.IntersectsWith(GParse.Math.Range{`0})">
+            <summary>
+            Returns whether this <see cref="T:GParse.Math.Range`1" /> intersects with another <see
+            cref="T:GParse.Math.Range`1" />
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.Range`1.JoinWith(GParse.Math.Range{`0})">
+            <summary>
+            Joins this <see cref="T:GParse.Math.Range`1" /> with another <see cref="T:GParse.Math.Range`1" />
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.Range`1.ValueIn(`0)">
+            <summary>
+            Returns whether a certain <paramref name="value" /> is contained inside this <see
+            cref="T:GParse.Math.Range`1" />
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.Range`1.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Math.Range`1.Equals(GParse.Math.Range{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Math.Range`1.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Math.Range`1.op_Equality(GParse.Math.Range{`0},GParse.Math.Range{`0})">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Math.Range`1.op_Inequality(GParse.Math.Range{`0},GParse.Math.Range{`0})">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Math.RangeExtensions">
+            <summary>
+            Extensions for the <see cref="T:GParse.Math.Range`1" /> struct
+            </summary>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Char}@,GParse.Math.Range{System.Char}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Byte}@,GParse.Math.Range{System.Byte}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.SByte}@,GParse.Math.Range{System.SByte}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Int32}@,GParse.Math.Range{System.Int32}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.UInt32}@,GParse.Math.Range{System.UInt32}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Int64}@,GParse.Math.Range{System.Int64}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.UInt64}@,GParse.Math.Range{System.UInt64}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Double}@,GParse.Math.Range{System.Double}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.Math.RangeExtensions.IsNeighbourOf(GParse.Math.Range{System.Single}@,GParse.Math.Range{System.Single}@)">
+            <summary>
+            Checks whether a range is neighbour to another
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Math.SaturatingMath">
+            <summary>
+               The saturating math class.
+            Implements all fundamental arithmetic operations with saturating logic.
+            </summary>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionOverflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the addition of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionUnderflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the addition of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionOverflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the subtraction of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionUnderflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the subtraction of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationOverflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the multiplication of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationUnderflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the multiplication of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionOverflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the division of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionUnderflow(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Whether the division of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Adds both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Subtracts both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Multiply(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Multiplies both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+               Divides both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionOverflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the addition of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionUnderflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the addition of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionOverflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the subtraction of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionUnderflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the subtraction of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationOverflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the multiplication of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationUnderflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the multiplication of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionOverflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the division of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionUnderflow(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Whether the division of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Adds both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Subtracts both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Multiply(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Multiplies both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+               Divides both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionOverflow(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+               Whether the addition of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionUnderflow(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+               Whether the subtraction of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationOverflow(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+               Whether the multiplication of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionUnderflow(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+               Whether the division of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.UInt32,System.UInt32)">
+            <summary>
+            Adds both elements with the lower bound being <see cref="F:System.UInt32.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt32.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Adds both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.UInt32,System.UInt32)">
+            <summary>
+            Subtracts both elements with the lower bound being <see cref="F:System.UInt32.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt32.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Subtracts both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Multiply(System.UInt32,System.UInt32)">
+            <summary>
+            Multiplies both elements with the lower bound being <see cref="F:System.UInt32.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt32.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Multiply(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Multiplies both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.UInt32,System.UInt32)">
+            <summary>
+            Divides both elements with the lower bound being <see cref="F:System.UInt32.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt32.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+            Divides both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillAdditionOverflow(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+               Whether the addition of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillSubtractionUnderflow(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+               Whether the subtraction of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillMultiplicationOverflow(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+               Whether the multiplication of these elements will overflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.WillDivisionUnderflow(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+               Whether the division of these elements will underflow
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.UInt64,System.UInt64)">
+            <summary>
+            Adds both elements with the lower bound being <see cref="F:System.UInt64.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt64.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Add(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+            Adds both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.UInt64,System.UInt64)">
+            <summary>
+            Subtracts both elements with the lower bound being <see cref="F:System.UInt64.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt64.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Subtract(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+            Subtracts both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Multiply(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+            Multiplies both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.UInt64,System.UInt64)">
+            <summary>
+            Divides both elements with the lower bound being <see cref="F:System.UInt64.MinValue" /> and
+            the upper bound being <see cref="F:System.UInt64.MaxValue" />. This is a branchless optimized
+            implementation.
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+        </member>
+        <member name="M:GParse.Math.SaturatingMath.Divide(System.UInt64,System.UInt64,System.UInt64,System.UInt64)">
+            <summary>
+            Divides both elements
+            </summary>
+            <param name="lhs"></param>
+            <param name="rhs"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+        </member>
+        <member name="T:GParse.Parsing.IPrattParser`2">
+            <summary>
+            Defines the interface of a modular pratt expression parser
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="P:GParse.Parsing.IPrattParser`2.TokenReader">
+            <summary>
+            The parser's token reader instance
+            </summary>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParser`2.TryParseExpression(System.Int32,`1@)">
+             <summary>
+             Attempts to parse an expression with a minimum precedence of
+             <paramref name="minPrecedence" />.
+             </summary>
+             <remarks>
+             The minimum precedence is used to enforce the precedence of operators as well as
+             associativity.
+            
+             The <see cref="T:GParse.Parsing.Parselets.SingleTokenInfixOperatorParselet`2" />
+             uses the <paramref name="minPrecedence" /> parameter to implement associativity by passing in
+             the associativity of the operator subtracted by one so that the operator itself is in the set
+             of possible parselets.
+             </remarks>
+             <param name="minPrecedence"></param>
+             <param name="expression"></param>
+             <returns></returns>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParser`2.TryParseExpression(`1@)">
+            <summary>
+            Attempts to parse an expression
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.IPrattParserBuilder`2">
+            <summary>
+            Defines the interface of a
+            <see cref="T:GParse.Parsing.IPrattParser`2" /> builder
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParserBuilder`2.Register(`0,GParse.Parsing.Parselets.IPrefixParselet{`0,`1})">
+            <summary>
+            Registers a prefix expression parser module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="prefixModule"></param>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParserBuilder`2.Register(`0,System.String,GParse.Parsing.Parselets.IPrefixParselet{`0,`1})">
+            <summary>
+            Registers a prefix expression parser module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="prefixModule"></param>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParserBuilder`2.Register(`0,GParse.Parsing.Parselets.IInfixParselet{`0,`1})">
+            <summary>
+            Registers an infix expression parser module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="infixModule"></param>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParserBuilder`2.Register(`0,System.String,GParse.Parsing.Parselets.IInfixParselet{`0,`1})">
+            <summary>
+            Registers an infix expression parser module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="infixModule"></param>
+        </member>
+        <member name="M:GParse.Parsing.IPrattParserBuilder`2.CreateParser(GParse.Lexing.ITokenReader{`0},System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Initializes a new Pratt Parser
+            </summary>
+            <param name="reader"></param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.IInfixParselet`2">
+            <summary>
+            Defines the interface of a module that parses infix operations
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="P:GParse.Parsing.Parselets.IInfixParselet`2.Precedence">
+            <summary>
+            The precedence of this module
+            </summary>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.IInfixParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},`1,System.IProgress{GParse.Diagnostic},`1@)">
+            <summary>
+            Attempts to parse an infix/postfix expression. (state will be restored by the caller on failure)
+            </summary>
+            <param name="parser"></param>
+            <param name="expression"></param>
+            <param name="diagnosticEmitter"></param>
+            <param name="parsedExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.IPrefixParselet`2">
+            <summary>
+            Defines the interface of a module that parses a prefix expression
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.IPrefixParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},System.IProgress{GParse.Diagnostic},`1@)">
+            <summary>
+            Attempts to parse a prefix expression. (state will be restored by the caller)
+            </summary>
+            <param name="parser"></param>
+            <param name="diagnosticReporter"></param>
+            <param name="parsedExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.LiteralNodeFactory`2">
+            <summary>
+            A delegate that will attempt to create a literal node expression
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+            <param name="token"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.LiteralParselet`2">
+            <summary>
+            A module for single token literals
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.LiteralParselet`2.#ctor(GParse.Parsing.Parselets.LiteralNodeFactory{`0,`1})">
+            <summary>
+            Initializes this class
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.LiteralParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},System.IProgress{GParse.Diagnostic},`1@)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Parsing.Parselets.InfixNodeFactory`2">
+            <summary>
+            A delegate that will attempt to create a infix expression node
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+            <param name="left"></param>
+            <param name="op"></param>
+            <param name="right"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.SingleTokenInfixOperatorParselet`2">
+            <summary>
+            A module that can parse an infix operation with an operator composed of a single token
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="P:GParse.Parsing.Parselets.SingleTokenInfixOperatorParselet`2.Precedence">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenInfixOperatorParselet`2.#ctor(System.Int32,System.Boolean,GParse.Parsing.Parselets.InfixNodeFactory{`0,`1})">
+            <summary>
+            Initializes this class
+            </summary>
+            <param name="precedence"></param>
+            <param name="isRightAssociative"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenInfixOperatorParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},`1,System.IProgress{GParse.Diagnostic},`1@)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Parsing.Parselets.PostfixNodeFactory`2">
+            <summary>
+            A delegate that will attempt to create a postfix expression node
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+            <param name="operand"></param>
+            <param name="operator"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.SingleTokenPostfixOperatorParselet`2">
+            <summary>
+            A module that can parse a postfix operation with an
+            operator that is composed of a single token
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="P:GParse.Parsing.Parselets.SingleTokenPostfixOperatorParselet`2.Precedence">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenPostfixOperatorParselet`2.#ctor(System.Int32,GParse.Parsing.Parselets.PostfixNodeFactory{`0,`1})">
+            <summary>
+            Initializes this class
+            </summary>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenPostfixOperatorParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},`1,System.IProgress{GParse.Diagnostic},`1@)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Parsing.Parselets.PrefixNodeFactory`2">
+            <summary>
+            A delegate that will attempt to create a prefix expression node
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+            <param name="operator"></param>
+            <param name="operand"></param>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.Parselets.SingleTokenPrefixOperatorParselet`2">
+            <summary>
+            A module for single-token prefix operators
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenPrefixOperatorParselet`2.#ctor(System.Int32,GParse.Parsing.Parselets.PrefixNodeFactory{`0,`1})">
+            <summary>
+            Initializes this class
+            </summary>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.Parselets.SingleTokenPrefixOperatorParselet`2.TryParse(GParse.Parsing.IPrattParser{`0,`1},System.IProgress{GParse.Diagnostic},`1@)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Parsing.PrattParser`2">
+            <summary>
+            Implements the modular pratt expression parser
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="F:GParse.Parsing.PrattParser`2.prefixModuleTree">
+            <summary>
+            The this holds the tree of <see cref="T:GParse.Parsing.Parselets.IPrefixParselet`2" /> to be used while parsing expressions.
+            </summary>
+        </member>
+        <member name="F:GParse.Parsing.PrattParser`2.infixModuleTree">
+            <summary>
+            This holds the tree of <see cref="T:GParse.Parsing.Parselets.IInfixParselet`2"/> to be used while parsing expressions.
+            </summary>
+        </member>
+        <member name="F:GParse.Parsing.PrattParser`2.diagnosticReporter">
+            <summary>
+            This is the <see cref="T:System.IProgress`1"/> reporter to which the parser should send <see cref="T:GParse.Diagnostic">Diagnostics</see> to.
+            </summary>
+        </member>
+        <member name="P:GParse.Parsing.PrattParser`2.TokenReader">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Parsing.PrattParser`2.#ctor(GParse.Lexing.ITokenReader{`0},GParse.Parsing.PrattParserModuleTree{`0,GParse.Parsing.Parselets.IPrefixParselet{`0,`1}},GParse.Parsing.PrattParserModuleTree{`0,GParse.Parsing.Parselets.IInfixParselet{`0,`1}},System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Initializes a pratt parser
+            </summary>
+            <param name="tokenReader"></param>
+            <param name="prefixModuleTree"></param>
+            <param name="infixModuleTree"></param>
+            <param name="diagnosticEmitter"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParser`2.TryParseExpression(System.Int32,`1@)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.Parsing.PrattParser`2.TryParseExpression(`1@)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.Parsing.PrattParserBuilder`2">
+            <summary>
+            Stores all modules that compose a <see cref="T:GParse.Parsing.PrattParser`2" />
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="ExpressionNodeT"></typeparam>
+        </member>
+        <member name="F:GParse.Parsing.PrattParserBuilder`2.prefixModuleTree">
+            <summary>
+            The registered <see cref="T:GParse.Parsing.Parselets.IPrefixParselet`2" />
+            </summary>
+        </member>
+        <member name="F:GParse.Parsing.PrattParserBuilder`2.infixModuleTree">
+            <summary>
+            The registered <see cref="T:GParse.Parsing.Parselets.IInfixParselet`2" />
+            </summary>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.Register(`0,GParse.Parsing.Parselets.IPrefixParselet{`0,`1})">
+            <summary>
+            Registers a new prefix module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.Register(`0,System.String,GParse.Parsing.Parselets.IPrefixParselet{`0,`1})">
+            <summary>
+            Registers a new prefix module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="id"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.Register(`0,GParse.Parsing.Parselets.IInfixParselet{`0,`1})">
+            <summary>
+            Registers a new infix module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.Register(`0,System.String,GParse.Parsing.Parselets.IInfixParselet{`0,`1})">
+            <summary>
+            Registers a new infix module
+            </summary>
+            <param name="tokenType"></param>
+            <param name="id"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterLiteral(`0,GParse.Parsing.Parselets.LiteralNodeFactory{`0,`1})">
+            <summary>
+            Registers a literal token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterLiteral(`0,System.String,GParse.Parsing.Parselets.LiteralNodeFactory{`0,`1})">
+            <summary>
+            Registers a literal token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenPrefixOperator(`0,System.Int32,GParse.Parsing.Parselets.PrefixNodeFactory{`0,`1})">
+            <summary>
+            Registers a prefix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenPrefixOperator(`0,System.String,System.Int32,GParse.Parsing.Parselets.PrefixNodeFactory{`0,`1})">
+            <summary>
+            Registers a prefix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenInfixOperator(`0,System.Int32,System.Boolean,GParse.Parsing.Parselets.InfixNodeFactory{`0,`1})">
+            <summary>
+            Registers an infix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="precedence"></param>
+            <param name="isRightAssociative"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenInfixOperator(`0,System.String,System.Int32,System.Boolean,GParse.Parsing.Parselets.InfixNodeFactory{`0,`1})">
+            <summary>
+            Registers an infix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="precedence"></param>
+            <param name="isRightAssociative"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenPostfixOperator(`0,System.Int32,GParse.Parsing.Parselets.PostfixNodeFactory{`0,`1})">
+            <summary>
+            Registers a postfix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.RegisterSingleTokenPostfixOperator(`0,System.String,System.Int32,GParse.Parsing.Parselets.PostfixNodeFactory{`0,`1})">
+            <summary>
+            Registers a postfix operator composed of a single token
+            </summary>
+            <param name="tokenType"></param>
+            <param name="ID"></param>
+            <param name="precedence"></param>
+            <param name="factory"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserBuilder`2.CreateParser(GParse.Lexing.ITokenReader{`0},System.IProgress{GParse.Diagnostic})">
+            <summary>
+            Creates a parser that will read from the <paramref name="reader" /> provided
+            </summary>
+            <param name="reader"></param>
+            <param name="diagnosticEmitter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.Parsing.PrattParserModuleTree`2">
+            <summary>
+            A tree used to store all modules of a kind
+            </summary>
+            <typeparam name="TokenTypeT"></typeparam>
+            <typeparam name="TModule"></typeparam>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserModuleTree`2.AddModule(`0,`1)">
+            <summary>
+            Adds a module to the tree
+            </summary>
+            <param name="tokenType"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserModuleTree`2.AddModule(`0,System.String,`1)">
+            <summary>
+            Adds a module to the tree
+            </summary>
+            <param name="tokenType"></param>
+            <param name="id"></param>
+            <param name="module"></param>
+        </member>
+        <member name="M:GParse.Parsing.PrattParserModuleTree`2.GetSortedCandidates(GParse.Lexing.ITokenReader{`0})">
+            <summary>
+            Returns the sorted candidates for the next token in line
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GParse.SourceLocation">
+            <summary>
+            Defines a point in a source code file
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Zero">
+            <summary>
+            The start of a file
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Max">
+            <summary>
+            Maximum possible value
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Min">
+            <summary>
+            Minimum possible value (invalid)
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Invalid">
+            <summary>
+            Standard invalid location
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Byte">
+            <summary>
+            The byte offset of this location
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Line">
+            <summary>
+            The line of this location
+            </summary>
+        </member>
+        <member name="F:GParse.SourceLocation.Column">
+            <summary>
+            The column of this location
+            </summary>
+        </member>
+        <member name="M:GParse.SourceLocation.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes this location
+            </summary>
+            <param name="line"></param>
+            <param name="column"></param>
+            <param name="pos"></param>
+        </member>
+        <member name="M:GParse.SourceLocation.To(GParse.SourceLocation)">
+            <summary>
+            Creates a range with this as start and
+            <paramref name="end" /> as end
+            </summary>
+            <param name="end"></param>
+            <returns></returns>
+        </member>
+        <member name="M:GParse.SourceLocation.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceLocation.Deconstruct(System.Int32@,System.Int32@)">
+            <summary>
+            Deconstructs this source position
+            </summary>
+            <param name="Line"></param>
+            <param name="Column"></param>
+        </member>
+        <member name="M:GParse.SourceLocation.Deconstruct(System.Int32@,System.Int32@,System.Int32@)">
+            <summary>
+            Deconstructs this source position
+            </summary>
+            <param name="Line"></param>
+            <param name="Column"></param>
+            <param name="Byte"></param>
+        </member>
+        <member name="M:GParse.SourceLocation.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceLocation.Equals(GParse.SourceLocation)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceLocation.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceLocation.op_Equality(GParse.SourceLocation,GParse.SourceLocation)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceLocation.op_Inequality(GParse.SourceLocation,GParse.SourceLocation)">
+            <inheritdoc />
+        </member>
+        <member name="T:GParse.SourceRange">
+            <summary>
+            Defines a range in source code
+            </summary>
+        </member>
+        <member name="F:GParse.SourceRange.Zero">
+            <summary>
+            Zero
+            </summary>
+        </member>
+        <member name="F:GParse.SourceRange.Start">
+            <summary>
+            Starting location
+            </summary>
+        </member>
+        <member name="F:GParse.SourceRange.End">
+            <summary>
+            Ending location
+            </summary>
+        </member>
+        <member name="M:GParse.SourceRange.#ctor(GParse.SourceLocation,GParse.SourceLocation)">
+            <summary>
+            Initializes this range
+            </summary>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:GParse.SourceRange.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceRange.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceRange.Equals(GParse.SourceRange)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceRange.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceRange.op_Equality(GParse.SourceRange,GParse.SourceRange)">
+            <inheritdoc />
+        </member>
+        <member name="M:GParse.SourceRange.op_Inequality(GParse.SourceRange,GParse.SourceRange)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

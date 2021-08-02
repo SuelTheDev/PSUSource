@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "Wab7324OtJDYB4GGTwug2MlxtNHPTA3SQtapwiykLPv1T7Q/RUJnWWbdl7MNNOM8+sr0iQEqdWglOtGUszRU0Q==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\rafal\\Desktop\\PSU-Obfuscator\\bot-dotnet\\bot-dotnet\\bot-dotnet.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Discord.Net. No packages exist with this id in source(s): Microsoft Visual Studio Offline Packages",
+      "libraryId": "Discord.Net",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+dotnet publish obf-cli -r linux-x64 --self-contained false
